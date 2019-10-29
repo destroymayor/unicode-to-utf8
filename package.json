@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "homepage": "https://jared-chen.com/unicode-to-utf8/build",
   "dependencies": {
-    "@material-ui/core": "^4.5.2",
+    "antd": "^3.24.3",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "use-clippy": "^1.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
