@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-import { Button, Input, Icon, message } from "antd";
-import useClipboard from "react-use-clipboard";
+import { Input, Icon } from "antd";
 
+import ClipboardButton from "components/clipboard";
 import unicodeToChar from "utils/unicodeToChar";
 
 const { TextArea } = Input;
@@ -13,17 +13,9 @@ function App() {
   const [encodeValue, setEncodeValue] = useState("");
   const [decodeValue, setDecodeValue] = useState("");
 
-  const [isCopied, setCopied] = useClipboard("");
-
   useEffect(() => {
     setDecodeValue(unicodeToChar(encodeValue));
   }, [encodeValue]);
-
-  const handleClipboard = () => {
-    if (decodeValue === "") return message.error(`Please enter something`);
-    setCopied(decodeValue);
-    message.success(`Your clipboard contains: ${decodeValue}`);
-  };
 
   return (
     <div className="App">
@@ -36,9 +28,7 @@ function App() {
       />
       <Icon className="App-icon" type="arrow-down" />
       <TextArea className="App-input" placeholder={"Result"} rows={4} value={decodeValue} />
-      <Button icon="copy" onClick={handleClipboard}>
-        Copy
-      </Button>
+      <ClipboardButton decodeValue={decodeValue} />
     </div>
   );
 }
